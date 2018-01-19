@@ -46,7 +46,6 @@ class NewTopic extends React.Component {
   }
 
   toggleAnonymous() {
-    // console.log('Toggling anon');
     let topic = store.getState().topic.topic;
     if (topic.anon) {
       this.props.setAnon(false);
@@ -58,8 +57,7 @@ class NewTopic extends React.Component {
   onSubmit(e, { value }) {
     let topic = store.getState().topic.topic;
     let user = store.getState().user.user;
-    console.log(topic.anon);
-    // console.log(topic);s
+
     if (topic.headline.length > 0 && topic.description.length > 0) {
       this.props.history.push('/');
       let topicObj = {

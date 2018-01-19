@@ -30,6 +30,11 @@ export default class NavBar extends React.Component {
     this.props.createNewTopic();
   }
 
+  handleChatClick() {
+    this.props.history.push('/chat');
+
+  }
+
   render() {
     // let name = (this.props.currentUser && (this.props.currentUser.fullName || this.props.currentUser.username) || '');
     let name = store.getState().user.user.username;
@@ -49,6 +54,9 @@ export default class NavBar extends React.Component {
           onClick={this.onHome} 
         >
           <img className="logo" src={Logo} />
+        </Menu.Item>
+        <Menu.Item>
+          <Button primary onClick={this.handleChatClick.bind(this)}>Chat</Button>
         </Menu.Item>
         <Menu.Menu position='right'>
           <Menu.Item>

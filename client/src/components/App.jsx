@@ -8,6 +8,7 @@ import TopicDetailed from './TopicDetailed.jsx';
 import axios from 'axios';
 import { Menu, Image, Sticky } from 'semantic-ui-react';
 import Logo from '../images/logo.png';
+import Chat from './Chat.jsx';
 
 var http = axios.create({
   withCredentials: true,
@@ -36,7 +37,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getCurrentUser()
+   this.getCurrentUser()
       .then(() => (
         this.getAllTopics()))
       .catch( (err) => console.log(err.message));
@@ -171,7 +172,11 @@ class App extends React.Component {
   }
 
   render() {
+    let username = this.props.username;
+    // console.log(this.props.user.password);
     let topic = store.getState().topic.topic;
+    // store.dispatch({type:'server/hello', data:'Hello!', user: username});
+
     return (
       <div className='mainapp'>
         <NavBar 
@@ -188,6 +193,9 @@ class App extends React.Component {
                 closeNewTopic={this.closeNewTopic}
               />
             </Container>
+          )}/>
+          <Route path='/chat' render={(props) => (
+            <Chat />
           )}/>
           <Route exact path='/' render={(props) => (
             <div>
@@ -237,6 +245,9 @@ const mapStateToProps = (state) => ({
   filteredTopicList: state.topicList.filteredTopicList,
   selectedTopic: state.topicList.selectedTopic,
   fullTopicList: state.topicList.fullTopicList
+  username: state.user.user.username,
+  viewedTopicList: state.topicList.viewedTopicList,
+  selectedTopic: state.topicList.selectedTopic
 });
 
 const mapDispatchToProps = (dispatch) => {

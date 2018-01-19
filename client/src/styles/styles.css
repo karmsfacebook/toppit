@@ -143,3 +143,18 @@ a.item.toTop.button {
     margin-left: auto;
 }
 
+.chat {
+  width: 500px;
+  border-radius: 3px;
+  margin: 100px 0 0 50px;
+}
+
+.chat-header {
+  /*border: 1px solid lightgrey !important;*/
+  margin: 50px 0 0 20px;
+}
+
+.messages .container {
+  background-color: #fff;
+  padding: 5px 0 5px 10px;
+}
